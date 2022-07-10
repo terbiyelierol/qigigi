@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+<div class="container mt-5">
+  <form action="{% url 'listings_create' %}" method="post" enctype="multipart/form-data" class="col d-flex flex-row justify-content-around">
+    {% csrf_token %}
+  <div>
+    <div class="row mb-3">
+      <label for="item_name" class="col-sm-12 col-form-label">ITEM NAME</label>
+      <div class="col-sm-10 col-lg-12 col-md-12">
+        <input type="text" class="form-control" id="item_name" name="item_name" required>
+      </div>
+    </div>
+    <div class="row mb-3">
+      <label for="price" class="col-sm-2 col-form-label">PRICE</label>
+      <div class="col-sm-10 col-lg-12 col-md-12">
+        <input type="number" class="form-control" id="price" name="price" required>
+      </div>
+      <div class="row mb-3">
+        <label for="category">CATEGORY</label>
+        <div class="col-sm-10 col-lg-12 col-md-12">
+          <select class="form-select " id="category" aria-label="Default select example" name="category" required>
+            <option value="service" class="">Service</option>
+            <option value="vehicle">Vehicle</option>
+            <option value="real_estate">Real estate</option>
+            <option value="art">Art</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="row mb-3">
+      <label for="description" class="col-sm-2 col-form-label">DESCRIPTION</label>
+      <div class="col-sm-10 col-lg-12 col-md-12">
+        <textarea class="form-control p-5" id="description" name="description" required></textarea>
+      </div>
+    </div>
+    <div class="row mb-3">
+      <label for="location" class="col-sm-2 col-form-label">LOCATION</label>
+      <div class="col-sm-10 col-lg-12 col-md-12">
+        <input type="text" class="form-control" id="location"  name="location" maxlength="7" required>
+        <small>*Location should be a valid postal code</small>
+      </div>
+    </div>
+    <div class=" offset-md-3 mt-5">
+      <button type="submit" class="btn post pe-5 ps-5 fw-bold">POST</button>
+      </div>
+  </div>
+    <div class="row form-group">
+      <div class="mb-3">
+        <label for="picture" class="form-label d-flex justify-content-center"><img class="image-size" src="{% static '/css/assets/upload.png' %}" alt=""></label>
+        <input class="form-control" name="picture" type="file" id="picture" name="picture" accept=".png,.jpeg" required>
+      </div>
+    </div> 
+  </form>
+</div>
+
+{% endblock %}

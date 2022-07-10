@@ -1,0 +1,8 @@
+qigigi/__pycache__
+main_app/__pycache__
+main_app/migrations
+main_app/templates/listings_index_nowold.html
+main_app/templates/listings_new_nowold.html
+main_app/static/script/map_old.js
+drafts
+.env

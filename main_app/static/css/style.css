@@ -1,0 +1,248 @@
+body{
+  font-family: Helvetica,Arial,sans-serif;
+}
+
+#logo{
+  width: 176px;
+  height: 120px;
+}
+.bg-image{
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  height: 70vh;
+  max-width: 100%;
+}
+.crud{
+  text-align: right;
+}
+.list-pic{
+  width:321px;
+  height:176px;
+  object-position:center center;
+  object-fit: cover;
+}
+.center-button{
+  margin-top: 14rem;
+  padding: 20px;
+  background-color: transparent;
+  color: #422378;
+}
+.color-btn{
+  background-color: #373373;
+  opacity: 0.8;
+  border: none;
+}
+.sortad{
+  border: 1px solid black;
+  border-radius: 4px;
+}
+.postad{
+  background-color: #373373;
+  color: white;
+  border-radius: 20px;
+}
+.postad:hover{
+  color: white;
+}
+.update-btn{
+  background-color: #373373;
+  color: white;
+}
+.update-btn:hover{
+  color: white;
+}
+.font{
+  font-weight: 500;
+}
+.footer{
+  height: 144px;
+  background-color: rgba(66, 35, 120, 0.8);
+}  
+.foot-container{
+  height: 144px;
+}
+#floatingTextarea{
+  height: 102px;
+}
+.send-message{
+  background-color: #373373;
+  opacity: 0.8;
+  border: none;
+  width: 100%;
+}
+.image-size{
+  max-width: 200px;
+  height: auto;  
+}
+.category{
+  margin-left: 110px;
+}
+.post{
+  background-color: #373373;
+  color: white;
+  border-radius: 20px;
+}
+.post:hover{
+  color: white;
+}
+.image-size{
+  border:1px solid black;
+}
+.bg-404{
+  background-image: url('/assets/trending-products_c8d0d15c-9afc-47e3-9ba2-f7bad0505b9b.webp');
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 70vh;
+  max-width: 100%;
+}
+.mask{
+  height: 600px;
+  background-color: rgba(148, 4, 252, 0.8);
+}
+.text-404{
+  margin-top: 220px;
+}
+.font-404{
+  font-size: 50px;
+  font-weight: bolder;
+}
+.description{
+  margin-left: 7rem;
+}
+
+.map {
+  height: 50%;
+}
+
+#listings-map{
+  width: 30%;
+  height: 442px;
+  border: 3px solid #373373;
+}
+#search_form{
+  width: 600px;
+}
+.update-color{
+  background-color: #373373;
+  color: white;
+  width: 100%;
+}
+.sort{
+  width: 290px;
+}
+.fit-image{
+  width:321px;
+  height:215px;
+  object-position:center center;
+  object-fit: cover;
+}
+.email_style{
+  text-align: center;
+  color: white;
+  text-decoration: none;
+  background-color: #373373;
+  font-weight: bold;
+}
+.show-image{
+  width:321px;
+  height:250px;
+  object-position:center center;
+  object-fit: cover;
+}
+.text-dec{
+  text-decoration: none;
+  color: black;
+}
+.text-dec:hover{
+  color: black;
+}
+.counter{
+  background-color:  #373373;
+  color: white;
+  text-align:center;
+  width:30px;
+  height: 30px;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  font-size: 18px;
+  font-weight: bold;
+}
+.card-hover:hover{
+  background-color:#f2f3f5;
+}
+.title-effect{
+  color:#373373 ;
+  font-weight: bold;
+  font-size: 18px;
+}
+.title-effect:hover{
+  color:#373373 ;
+  font-weight: bold;
+  text-decoration: underline;
+}
+.price-effect{
+  color: #37a864;
+  font-weight: bold;
+}
+.cat-effect:hover{
+  color: #2681db;
+  cursor: pointer;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+#header_register{
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 26px;
+  text-align: center;
+  margin-bottom: 20px;
+  background-color: #373373;
+  color: #fff;
+}
+#register_btn{
+  background-color: #373373;
+  color: #fff;
+  width: 100%;
+  font-weight: bold;
+  margin-top: 20px;
+  padding-top: 7px;
+  padding-right: 30px;
+  padding-bottom: 7px;
+  padding-left: 30px;
+}
+#base-buttons{
+  color: #2681db;
+  font-weight: bold;
+}
+#base-buttons:hover{
+  color: #1405b9;
+  transition-property: #1405b9;
+  transition-duration: 0.2s;
+  text-decoration: underline;
+}
+.base-postad{
+  background-color: #373373;
+  color: white;
+  border-radius: 5px;
+}
+.base-post{
+  color: white;
+  font-weight: 700;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.base-box{
+  margin-left: 100px;
+  margin-right: 100px;
+}
+
+@media only screen and (max-width: 1000px) {
+  #listings-map {
+    display:none;
+  }
+}

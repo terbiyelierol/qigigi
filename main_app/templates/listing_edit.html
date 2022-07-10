@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+<div class="container mt-5">
+  <form action="{% url 'listings_update' listing.id%}" method="post" enctype="multipart/form-data" class="col d-flex flex-row justify-content-around">
+    {% csrf_token %}
+  <div>
+    <div class="row mb-3">
+      <label for="item_name" class="col-sm-12 col-form-label">ITEM NAME</label>
+      <div class="col-sm-10 col-lg-12 col-md-12">
+        <input type="text" class="form-control" id="item_name" name="title" value="{{listing.title}}" required>
+      </div>
+    </div>
+    <div class="row mb-3">
+      <label for="price" class="col-sm-2 col-form-label">PRICE</label>
+      <div class="col-sm-10 col-lg-12 col-md-12">
+        <input type="number" class="form-control" id="price" name="price" value="{{listing.price}}" required>
+      </div>
+    </div>
+    <div class="row mb-3">
+      <label for="category">CATEGORY</label>
+      <div class="col-sm-10 col-lg-12 col-md-12">
+        <select class="form-select " id="category" aria-label="Default select example" name="category" required>
+          <option value="service"
+          {% if listing.category == "service" %}
+          selected
+          {% endif %}
+          >Service</option>
+          <option value="vehicle"
+          {% if listing.category == "vehicle" %}
+          selected
+          {% endif %}
+          >Vehicle</option>
+          <option value="real_estate"
+          {% if listing.category == "real_estate" %}
+          selected
+          {% endif %}
+          >Real estate</option>
+          <option value="art"
+          {% if listing.category == "art" %}
+          selected
+          {% endif %}
+          >Art</option>
+          <option value="other"
+          {% if listing.category == "other" %}
+          selected
+          {% endif %}
+          >Other</option>
+        </select>
+      </div>
+    </div>
+    <div class="row mb-3">
+      <label for="description" class="col-sm-2 col-form-label">DESCRIPTION</label>
+      <div class="col-sm-10 col-lg-12 col-md-12">
+        <textarea class="form-control p-5" id="description" name="description" required>{{listing.description}}</textarea>
+      </div>
+    </div>
+    <div class="row mb-3">
+      <label for="location" class="col-sm-2 col-form-label">LOCATION</label>
+      <div class="col-sm-10 col-lg-12 col-md-12">
+        <input type="text" class="form-control" id="location"  name="location"  value="{{listing.location}}" maxlength="7" required>
+        <small>*Location should be a valid postal code</small>
+      </div>
+    </div>
+    <div class=" offset-md-3 mt-5">
+      <button type="submit" class="btn post pe-5 ps-5 fw-bold">POST</button>
+      </div>
+  </div>
+  </form>
+</div>
+
+{% endblock %}

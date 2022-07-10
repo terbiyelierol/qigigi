@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+
+{% if error_message %}<p class="red-text">{{ error_message }}</p>{% endif %}
+  
+  <div class="d-flex justify-content-center">
+    <div>
+      <h1 id="header_register">Register</h1>
+      <form method="post" action="{% url 'signup' %}" >
+          <table>
+          {% csrf_token %}
+          {{ form.as_table }}
+          </table>
+          <input type="submit" value="Sign up" id="register_btn">
+      </form>
+    </div>
+  </div>
+{% endblock %}

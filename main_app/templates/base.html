@@ -1,0 +1,100 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css"
+    />
+    <script defer
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+    crossorigin="anonymous"
+  ></script>
+  <title>Qigigi</title>
+  <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+</head>
+<body>
+  <!-- navbar -->
+  <nav class="navbar navbar-expand-md navbar-light ">
+    <div class="container-xxl nav_base">
+      <a href="/" class="navbar-brand ">
+        <img id="logo" src="{% static '/css/assets/logo_new.svg' %}" alt="logo">
+      </a>
+      <!-- toggle button for navbar -->
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#main-nav"
+        aria-controls="main-nav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- navbar links -->
+
+      <div
+        class="collapse navbar-collapse justify-content-start align-center "
+        id="main-nav"
+      >
+      <form class="d-flex border border-dark" id="search_form"  role="search" method="POST" action="/listings/" >
+        {% csrf_token %}
+        {%if search%}
+        <input value="{{search}}" name="search" class="form-control border border-white" type="search" placeholder="Search for anything..." aria-label="Search" name="search">
+        {%else%}
+        <input name="search" class="form-control border border-white" type="search" placeholder="Search for anything..." aria-label="Search" name="search">
+        {%endif%}
+        <label for="search" class="form-label"></label>
+        <button class="btn btn-outline bg-light border" ><i class="bi bi-search"></i></button>
+      </form>
+        <ul class="navbar-nav">
+          {% if user.is_authenticated %}
+          <li class="nav-item">
+            <a class="nav-link text-primary" href="/listings/user/{{user.id}}" id="base-buttons">My Ads</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-primary" href="{% url 'logout' %}" id="base-buttons">Sign Out</a>
+          </li>
+          {% else %}
+          <li class="nav-item">
+            <a class="nav-link text-primary" href="{% url 'signup' %}" id="base-buttons">Register</a>
+          </li>
+          <li class="nav-item d-none d-md-inline">
+            <span class="nav-link text-dark">or</span>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-primary" href="{% url 'login' %}" id="base-buttons">Sign In</a>
+          </li>
+          {% endif %}
+          <li class="nav-item">
+            <a class="nav-link base-postad" href="/listings/new"><span class="base-post">POST AD</span></a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <main style="background-color:#f8f9f9 ;">
+      {% block content %}
+      {% endblock %}
+  </main>
+
+
+      {% block footer %}
+      {% endblock %}
+  
+</body>
+</html>

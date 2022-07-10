@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+
+{% if error_message %}<p class="red-text">{{ error_message }}</p>{% endif %}
+  
+  <div class="d-flex justify-content-center">
+    <div>
+      <h1 id="header_register">Sign-In</h1>
+      <form method="post" action="{% url 'login' %}" >
+          <table>
+          {% csrf_token %}
+          {{ form.as_table }}
+          </table>
+          <input type="submit" value="Login" id="register_btn">
+          <input type="hidden" name="next" value="{{ next }}">
+      </form>
+  </div>
+</div>
+{% endblock %}

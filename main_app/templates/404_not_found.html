@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="p-5 text-center bg-404 rounded-3">
+  <div class="mask">
+    <div class="d-flex justify-content-center align-items-center">
+      <div class="text-white text-404">
+        <img src="{% static '/css/assets/logo_new.svg' %}" alt="">
+        <h1 class="mb-3 font-404">404</h1>
+        <h4 class="mb-3 font-404">Sorry, we couldn't find this page. But don't worry, you can find plenty of other things on our homepage</h4>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

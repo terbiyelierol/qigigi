@@ -1,0 +1,167 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<script type="module" src="{% static 'script/map.js' %}"></script>
+
+{{listings_obj|json_script:"listings-json"}}
+
+<script defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD9x7baBpDlIaA7pAjD4UObpEHZnNKKZmA&callback=initMap"
+></script>
+
+<div class="container-xxl">
+  <div class="d-flex justify-content-end gap-5">
+    
+  </div>
+</div>
+<div class="row mx-2 mt-5 d-flex flex-row">
+  ​<h5 class="text-secondary fw-bold">Category:</h5><br>
+  <div class="col-md-4 col-sm-6 col-lg-2 ">
+    <form method="POST" action="/listings/">
+      {% csrf_token %}
+      <div class="form-check">
+        {% if "service" in filter %}
+        <input type="checkbox" id="service" name="service" value="service" checked>
+        {% else %}
+        <input type="checkbox" id="service" name="service" value="service">
+        {% endif %}
+        <label class="form-check-label cat-effect" for="service">
+          Service ({{n_services}})
+        </label>
+      </div>
+      <div class="form-check">
+        {% if "vehicle" in filter %}
+        <input type="checkbox" id="vehicle" name="vehicle" value="vehicle" checked>
+        {% else %}
+        <input type="checkbox" id="vehicle" name="vehicle" value="vehicle">
+        {% endif %}
+        <label class="form-check-label cat-effect" for="vehicle">
+          Vehicle ({{n_vehicles}})
+        </label>
+      </div>
+      <div class="form-check">
+        {% if "real_estate" in filter %}
+        <input type="checkbox" id="real_estate" name="real_estate" value="real_estate" checked>
+        {% else %}
+        <input type="checkbox" id="real_estate" name="real_estate" value="real_estate">
+        {% endif %}
+        <label class="form-check-label cat-effect" for="real_estate">
+          Real estate ({{n_real_estates}})
+        </label>
+      </div>
+      <div class="form-check">
+        {% if "art" in filter %}
+        <input type="checkbox" id="art" name="art" value="art" checked>
+        {% else %}
+        <input type="checkbox" id="art" name="art" value="art">
+        {% endif %}
+        <label class="form-check-label cat-effect" for="art">
+          Art ({{n_arts}})
+        </label>
+      </div>
+      <div class="form-check">
+        {% if "other" in filter %}
+        <input type="checkbox" id="other" name="other" value="other" checked>
+        {% else %}
+        <input type="checkbox" id="other" name="other" value="other">
+        {% endif %}
+        <label class="form-check-label cat-effect" for="other">
+          Other ({{n_others}})
+        </label>
+      </div>
+      <h5 class="text-secondary fw-bold">Price:</h5><br>
+      <div class="form-outline d-flex flex-row gap-5">
+        <div class="form-outline d-flex  flex-column">
+          <div>from</div>
+          <label class="form-label " for="form12"></label>
+          {% if filter.min_price == "" %}
+          <input type="number" name="min_price" class="form-control" />
+          {% else %}
+          <input type="number" name="min_price" class="form-control" value={{filter.min_price}} />
+          {% endif %}
+        </div>
+        <div class="form-outline d-flex  flex-column">
+          <div>to</div>
+          <label class="form-label " for="form12"></label>
+          {% if filter.max_price == "" %}
+          <input type="number" name="max_price" class="form-control" />
+          {% else %}
+          <input type="number" name="max_price" class="form-control" value={{filter.max_price}} />
+          {% endif %}
+        </div>
+      </div>
+      <select name="sort" class="sort mt-3" style="text-align: center;">
+        <li>
+        {% if filter.sort == 'lowest' %}
+          <option selected class="dropdown-item" value="lowest">Price: lowest first</option>
+        {% else %}
+          <option class="dropdown-item" value="lowest">Price: lowest first</option>
+        {% endif %}
+        </li>
+        <li>
+        {% if filter.sort == 'highest' %}
+        <option selected class="dropdown-item" value="highest">Price: highest first</option>
+        {% else %}
+        <option class="dropdown-item" value="highest">Price: highest first</option>
+        {% endif %}
+        </li>
+        <li>
+        {% if filter.sort == 'newest' %}
+        <option selected class="dropdown-item" value="newest">Posted: newest first</option>
+        {% else %}
+        <option class="dropdown-item" value="newest">Posted: newest first</option>
+        {% endif %}
+        </li>
+        <li>
+        {% if filter.sort == 'oldest' %}
+        <option selected class="dropdown-item" value="oldest">Posted: oldest first</option>
+        {% else %}
+        <option class="dropdown-item" value="oldest">Posted: oldest first</option>
+        {% endif %}
+        </li>
+      </select>
+      {% if search != "" %}
+        <input name="search" type="hidden" value="{{search}}">
+      {%endif%}
+      <div class="form-outline d-flex  flex-column align-self-center ">
+        <!-- <input class="btn  mt-4 fw-bold update-btn" type="button" value="Update"> -->
+        <button class="update-color mt-3">Update</button>
+      </div>
+  </div>
+  </form>
+
+
+  <div class="col-sm-8 col-md-9 col-lg-6 d-flex flex-wrap gap-4 ms-5 ">
+    {%for listing in listings%}
+
+    <div class="col-lg-12 card mb-3 shadow card-hover" style="width: 700px;height:216px;">
+      <a href="/listings/{{listing.id}}" class ="text-dec">
+        <div class="row g-0">
+          <div class="counter">{{ forloop.counter }}</div>
+          <div class="col-md-4">
+            <img src="{{listing.picture}}" class="img-fluid fit-image" alt="{{listing.title}}">
+          </div>
+          <div class="col-md-8 mt-1 d-flex flex-row" >
+            <div >
+              <h5 class="card-title title-effect">{{listing.title}}</h5>
+              <p class="card-text price-effect"><span>&#36</span>{{listing.price}}</p>
+              <p class="card-text">{{listing.description}}</p>
+              <p class="card-text text-muted">{{listing.location}}</p>
+            </div>
+          </div>
+        </div>
+      </a>
+    </div>
+    {%endfor%}
+
+  </div>
+
+  
+  <div class="position-fixed me-3 bottom-10 end-0 index_map "id="listings-map">
+  </div>
+</div>
+
+
+{% endblock %}

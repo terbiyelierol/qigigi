@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<script type="module" src="{% static 'script/map.js' %}"></script>
+
+{{listing_obj|json_script:"listings-json"}}
+
+<script defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD9x7baBpDlIaA7pAjD4UObpEHZnNKKZmA&callback=initMap"
+></script>
+
+<div class="container-xxl my-5">
+    <div class="row">
+        <div class="col-lg-4 col-md-4">
+            <div class="col-md-6 col-sm-12 card" style="width: 20rem;">
+                    <img src="{{listing.picture}}" class="card-img-top show-image" alt="shoe">
+                    <div class="card-body">
+                        <h6 class="card-text text-decoration-none">{{listing.user.username}}</h6>
+                        <h5 class="card-title">{{listing.title}}</h5>
+                        <p class="card-text">{{listing.price}}</p>
+                        <p class="card-text">{{listing.description}}</p>
+                        <p class="card-text">{{listing.location}}</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-4 col-md-9">
+        <div class="col-md-6 col-sm-12 my-5" style="width: 20rem;">
+            <h5 style="text-align: center;" class="text-secondary fw-bold">Contact {{listing.user.username}}</h5>  <br>
+            <h5 class="email_style">Email Address {{listing.user.email}}</h5>            
+        </div>
+    </div>
+    
+    <div class="col-md-6 col-sm-12 card" class="card-img-top map-size" id="listings-map" alt="map">
+    </div>
+    
+</div>
+</div>
+
+{% endblock %}

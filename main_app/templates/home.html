@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="bg-image md-6" style="background-image:url('{% static '/css/assets/landing_bg.webp'%}')">
+  <div class="d-grid col-3 mx-auto">
+    <a href="/listings" class="btn color-btn opacity-75 rounded-pill center-button"><span class="display-6 font text-light ">SEE ALL ITEMS</span></a>
+  </div>
+</div>
+{% endblock %}
+
+{% block footer %}
+
+<div class="foot-container">
+  <footer>
+    <div class="d-flex flex-row justify-content-around align-items-center mb-3 footer">
+      <div class="p-2"><a href="#" class="display-6 fw-bold text-white"><i class="bi bi-github"></i></a></div>
+      <div class="p-2"><span class="fw-bold text-white">All Rights Reserved &#169; Team ELM0 2022</span></div>
+      <div class="p-2"><a href="" class="display-6 fw-bold text-white"><i class="bi bi-border-all"></i></a></div>
+    </div>
+  </footer>
+</div>
+{% endblock %}
