@@ -37,7 +37,6 @@
 # 🎬 SHOWCASE
 
 [Qigigi](https://qigigi.herokuapp.com/)
-<a href="https://qigigi.herokuapp.com/" target="_blank">Qigigi</a>
 
 # 👨‍🔬🔬🧬 FUTURE OF THE PROJECT
 
